@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FocusMode Zones</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="transition-all duration-500" id="body">
+
+  <div class="max-w-4xl mx-auto py-6 text-center">
+    <h1 class="text-3xl font-bold mb-4">FocusMode Zones</h1>
+    <div class="flex justify-center gap-4 mb-6">
+      <button onclick="switchZone('deep')" class="px-4 py-2 bg-blue-800 text-white rounded">Deep Work</button>
+      <button onclick="switchZone('quick')" class="px-4 py-2 bg-green-700 text-white rounded">Quick Tasks</button>
+      <button onclick="switchZone('rest')" class="px-4 py-2 bg-orange-600 text-white rounded">Rest Zone</button>
+    </div>
+
+    <div id="zoneContent" class="text-lg font-medium">
+      Select a zone to begin your focus session.
+    </div>
+  </div>
+
+  <script>
+    const body = document.getElementById('body');
+    const zoneContent = document.getElementById('zoneContent');
+
+    const zones = {
+      deep: {
+        bg: 'bg-gray-900 text-white',
+        content: 'You’re in Deep Work mode. Block distractions. Timer set for 90 minutes.',
+      },
+      quick: {
+        bg: 'bg-gray-100 text-gray-800',
+        content: 'Quick Tasks Zone: 20-minute power session. Fast and focused.',
+      },
+      rest: {
+        bg: 'bg-gradient-to-br from-orange-200 to-pink-300 text-gray-900',
+        content: 'Rest Zone: Take a mindful break. Breathe, stretch, or hydrate.',
+      }
+    };
+
+    function switchZone(zone) {
+      // Reset classes
+      body.className = 'transition-all duration-500';
+      // Apply new zone
+      body.classList.add(zones[zone].bg);
+      zoneContent.textContent = zones[zone].content;
+    }
+  </script>
+</body>
+</html>
